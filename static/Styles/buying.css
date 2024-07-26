@@ -1,0 +1,107 @@
+body {
+    height: 100vh;
+}
+
+.buy-btns {
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+    margin-top: 50px;
+}
+
+.buy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 44px;
+    width: 309px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.buy button {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.buy button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.buy button:active {
+    background-color: #004080;
+}
+
+.buy h3 {
+    margin: 0;
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.buy p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.buy .price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.basic {
+    color: rgb(88, 88, 88);
+}
+
+.standart {
+    color: #0056b3;
+}
+
+.premium {
+    color: orange;
+}
+
+.basic-h2 {
+    position: absolute;
+    bottom: 700px;
+    left: 620px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+.standart-h2{
+    position: absolute;
+    bottom: 700px;
+    left: 1052px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+.premium-h2{
+    position: absolute;
+    bottom: 700px;
+    left: 1469px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 5px 10px;
+    border-radius: 15px;    
+}
+

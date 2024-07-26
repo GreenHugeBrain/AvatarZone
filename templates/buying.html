@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/Styles/style.css">
+    <link rel="stylesheet" href="/static/Styles/buying.css">
+    <meta name="description"
+        content="ოფიციალური AvatarZone - ის ვებსაიტი, საიდანაც შეძლებთ ჩვენი ოფიციალური Finder - ის გადმოწერას.">
+    <meta name="keywords"
+        content="avatar finder, steam, steamfinder, steamskins, avatar skins, ავატარ ფაინდერი, ფაინდერი, სტიმი, სტიმ ფაინდერი, csgo, csgo skins, cs2, cs2 skins, avatar finder application download, avatar zone finder, avatar zone, avatar zone website, avatar zone download">
+    <meta name="author" content="Khvtiso, CASTIEL, Jaane, Tommy, Mrich">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Avatar Zone - Official Finder Download">
+    <meta property="og:description"
+        content="Download the official AvatarZone Finder application from our website. Explore various avatars and enhance your Steam experience.">
+    <meta property="og:image" content="/static/download-_1_1.jpg">
+    <meta property="og:url" content="steamfinder.renode.space">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Avatar Zone - Official Finder Download">
+    <meta name="twitter:description"
+        content="Download the official AvatarZone Finder application from our website. Explore various avatars and enhance your Steam experience.">
+    <meta name="twitter:image" content="/static/download-_1_1.jpg">
+    <meta name="twitter:site" content="@yourtwitterhandle">
+    <link rel="icon" href="/static/download-_1_1.jpg" type="icon">
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+    <title>Avatar Zone</title>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <!-- Other navigation items -->
+            {% if current_user.is_authenticated %}
+            <span>{{ current_user.username }}</span>
+            <a href="{{ url_for('logout') }}">LOGOUT</a>
+            {% endif %}
+        </nav>
+        <div class="icon"><a href="https://discord.gg/Zpfg2Cy7" target="_blank">დ</a></div>
+    </header>
+
+    <main>
+        <div class="buy-btns">
+            <form class="buy" action="{{ url_for('basic') }}" method="POST">
+                <h2 class="basic-h2">AvatarZone:<span class="basic">Basic</span></h2>
+                <p>5 დღით: 16.99₾
+                    მინუსები: 3 საათი ჰოლდი</p>
+                <button type="submit">Buy Basic</button>
+            </form>
+            <form class="buy" action="{{ url_for('standart') }}" method="POST">
+                <h2 class="standart-h2">AvatarZone:<span class="standart">Standart</span></h2>
+                <p>AvatarFinder - 2 კვირით: 45.99₾
+                    მინუსები: 8 საათი ჰოლდი
+                    ბენეფიტები: მეტი რექუესტი</p>
+                <button type="submit">Buy Standart</button>
+            </form> 
+            <form class="buy" action="{{ url_for('premium') }}" method="POST">
+                <h2 class="premium-h2">AvatarZone:<span class="premium">Premium</span></h2>
+                <p>AvatarFinder - 1 თვით: 399.99₾
+                    ბენეფიტები: მეტი რექუესტი, სრული პროდუქტი</p>
+                <button type="submit">Buy Premium</button>
+            </form>
+        </div>  
+    </main>
+    
+</body>
+</html>

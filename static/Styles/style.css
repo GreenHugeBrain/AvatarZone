@@ -1,6 +1,7 @@
 @font-face {
     font-family: 'TBC';
-    src: url('../font/TBCContracticaCAPS-Medium.ttf');
+    src: url('../font/TBCContracticaCAPS-Medium.ttf') format('truetype');
+    font-display: swap;
 }
 
 
@@ -36,7 +37,7 @@ body::before {
 
 section {
     display: grid;
-    gap: 4rem;
+    gap: 1rem;
     align-items: center;
     justify-content: center;
 }
@@ -74,10 +75,6 @@ section {
     transition: scale calc(((1 - var(--active, 0)) + 0.2) * 1s), filter calc(((1 - var(--active, 0)) + 0.2) * 1s);
 }
 
-.things {
-    padding: 0;
-    margin: 0;
-}
 
 .digit:first-of-type {
     padding-left: 5rem;
@@ -131,61 +128,67 @@ section {
     padding: 0;
     margin: 0;
     display: flex;
+    width: 80vw;
+    gap: 240px;
     font: bold 1.5rem sans-serif;
     text-transform: uppercase;
+    justify-content: center;
     color: grey;
 }
 
-.things li {
-    padding: 0 .5em .25em;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    font-family: TBC;
-    font-size: xx-large;
-    transition: .3s;
+.things section{
+    background-color: rgba(87, 87, 87, 0.259);
+    padding: 20px;
+    border-radius: 20px;
+    filter: blur(5px);
+    transition: all 1s;
 }
 
-.things li:hover {
-    color: #fff;
+.things section:hover{
+    filter: blur(0px);
 }
 
-.things li:before {
-    content: "";
-    position: absolute;
-    inset: calc(100% - 3px) 0 0 0;
-    /* 3px = the thickness */
-    background: #ffffff;
-    /* the color */
-    scale: 0 1;
-    transition: .3s, translate 0s .3s;
+.things section h3{
+    text-align: center;
 }
 
-.things:hover li:before {
-    scale: 1;
-}
 
-.things li:hover:before {
-    translate: 0;
-    transition: .3s;
-}
-
-.things:hover li:has(~ li:hover):before {
-    translate: 100% 0;
-    transition: .2s .2s, scale 0s .4s;
-}
-
-.things:hover li:hover~li:before {
-    translate: -100% 0;
-    transition: .2s .2s, scale 0s .4s;
-}
 
 .things-container {
     color: rgb(191, 192, 192);
-    text-align: center;
+    text-align:start;
     font-size: xx-large;
+    
 }
 
+section p {
+    width: 535px;
+    font-size: 23px;
+    text-align: center;
+}
+
+
+section{
+    display: grid;
+    justify-items: center;
+}
+
+hr{
+    width: 500px;
+}
+
+.buttons{
+    display: flex;
+    gap: 30px;
+}
+
+section button{
+    padding: 8px 10px;
+    background-color: #292929a2;
+    border: 1px solid white;
+    color: white;
+    border-radius: 3px;
+}
 
 main {
     display: grid;
@@ -395,80 +398,6 @@ nav span{
     background-color: rgb(0, 0, 0);
 }
 
-/* CSS for the download section */
-.download-section {
-    color: white; /* Set text color to white */
-    background-color: transparent; /* Optional: Set a dark background for contrast */
-    padding: 130px;
-    border-radius: 8px;
-    border: 2px solid rgb(222, 222, 222);
-    text-align: center;
-    gap: 40px;
-    display: grid;
-}
-
-.download-section h2 {
-    color: white; /* Ensure the heading text is also white */
-}
-
-.premium_button{
-    color: white; /* Ensure button text is white */
-    background-color: #ffc400; /* Optional: Set a button background color */
-    border: 1px solid #ffffff; /* Optional: Set button border color */
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    font-family: TBC;
-    text-decoration: none;
-    display: inline-block;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.premium_button:hover{
-    background-color: #ffffff; /* Optional: Darken the button background on hover */
-    color: black; /* Ensure text remains white on hover */
-}
-
-.standart_button{
-    color: white; /* Ensure button text is white */
-    background-color: #cf0000; /* Optional: Set a button background color */
-    border: 1px solid #ffffff; /* Optional: Set button border color */
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    font-family: TBC;
-    text-decoration: none;
-    display: inline-block;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.standart_button:hover{
-    background-color: #ffffff; /* Optional: Darken the button background on hover */
-    color: black; /* Ensure text remains white on hover */
-}
-
-.basic_button{
-    color: white; /* Ensure button text is white */
-    background-color: #333; /* Optional: Set a button background color */
-    border: 1px solid #ffffff; /* Optional: Set button border color */
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    font-family: TBC;
-    text-decoration: none;
-    display: inline-block;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.basic_button:hover{
-    background-color: #ffffff; /* Optional: Darken the button background on hover */
-    color: black; /* Ensure text remains white on hover */
-}
-
-.download-section p {
-    color: white; /* Ensure text in paragraphs is white */
-    font-family: TBC;
-    padding: 10px;
-    background-color: #292929;
-    border-radius: 10px;
-}
 
 .icon {
     background-color: rgba(94, 0, 194, 0.487);
@@ -510,16 +439,6 @@ nav span{
 }
 
 @media screen and (max-width: 920px) {
-    .download-section {
-        color: white;
-        background-color: transparent;
-        padding: 65px;
-        border-radius: 8px;
-        border: 2px solid rgb(222, 222, 222);
-        text-align: center;
-        gap: 40px;
-        display: grid;
-    }
     .servicefutures {
         width: 418px;
     }
@@ -538,9 +457,6 @@ nav span{
         font-size: 2rem;
     }
 
-    .download-section{
-        padding: 39px;
-    }
     
 }
 
@@ -549,21 +465,11 @@ nav span{
         font-size: 2rem;
     }
 
-    .download-section {
-        padding: 16px;
-    }
+
 }
 
     
 @media screen and (max-width: 666px) {
-    .download-section p {
-        color: white;
-        font-family: TBC;
-        padding: 10px;
-        background-color: #292929;
-        border-radius: 10px;
-        width: 406px;
-    }
 
     .things {
         list-style: none;
@@ -602,4 +508,51 @@ nav span{
         margin-right: 0px;
     }
 
+}
+
+
+.download-section p{
+    color: white;
+    text-align: center;
+    font-size: larger;
+    background-color: rgb(0, 0, 0);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.download-section h2{
+    color: white;
+    text-align: center;
+}
+
+.download-section{
+    background-color: rgb(224 224 224 / 16%);
+        width: 800px;
+    gap: 20px;
+    display: grid;
+    justify-items: center;
+    padding: 60px;
+    border-radius: 10px;
+
+}
+
+footer{
+    display: grid;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.download-section a{
+    padding: 19px;
+    background: black;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    transition: all 0.7s;
+}
+
+.download-section a:hover{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
 }
