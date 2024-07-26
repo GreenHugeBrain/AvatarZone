@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/Styles/pay.css">
+    <link rel="icon" href="/static/download-_1_1.jpg" type="icon">
+
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+    <title>Avatar Zone</title>
+</head>
+
+<body>
+    <div class="icon"><a href="https://discord.gg/Zpfg2Cy7" target="_blank">დ</a></div>
+
+    <main>
+        <form class="regform" action="/pay" method="post" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                {{ form.username.label }}<br>
+                {{ form.username(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label }}<br>
+                {{ form.email(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label }}<br>
+                {{ form.password(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.groupID.label }}<br>
+                {{ form.groupID(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+            <div class="login">
+                <a href="/login">ავტორიზაცია</a>
+            </div>
+
+            {% if RegisterSuccess %}
+            <p>თქვენ წარმატებით დარეგისტრირდით, თქვენს იუზერს </p>
+            {% endif %}
+        </form>
+
+        <div class="buy-btns">
+            <form class="buy" action="{{ url_for('basic') }}" method="POST">
+                <button type="submit">Buy Basic</button>
+            </form>
+            <form class="buy" action="{{ url_for('standart') }}" method="POST">
+                <button type="submit">Buy Standart</button>
+            </form> 
+            <form class="buy" action="{{ url_for('premium') }}" method="POST">
+                <button type="submit">Buy Premium</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

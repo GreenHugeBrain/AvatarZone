@@ -1,0 +1,605 @@
+@font-face {
+    font-family: 'TBC';
+    src: url('../font/TBCContracticaCAPS-Medium.ttf');
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
+    background: hsl(0 0% 0%);
+    gap: 2rem;
+    height: 4200px;
+    overflow-x: hidden;
+}
+
+body::before {
+    --line: hsl(0 0% 95% / 0.25);
+    content: "";
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background:
+        linear-gradient(90deg, var(--line) 1px, transparent 1px 10vmin) 0 -5vmin / 10vmin 10vmin,
+        linear-gradient(var(--line) 1px, transparent 1px 10vmin) 0 -5vmin / 10vmin 10vmin;
+    mask: linear-gradient(-15deg, transparent 30%, white);
+    top: 0;
+    z-index: -1;
+}
+
+section {
+    display: grid;
+    gap: 4rem;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.code {
+    font-size: 3rem;
+    display: flex;
+    flex-wrap: nowrap;
+    color: hsl(0 0% 100%);
+    border-radius: 1rem;
+    background: hsl(0 0% 6%);
+    justify-content: center;
+    box-shadow: 0 1px hsl(0 0% 100% / 0.25) inset;
+}
+
+.code:hover {
+    cursor: grab;
+}
+
+.digit {
+    display: flex;
+    height: 100%;
+    padding: 5.5rem 1rem;
+}
+
+.digit:focus-visible {
+    outline-color: hsl(0 0% 50% / 0.25);
+    outline-offset: 1rem;
+}
+
+.digit span {
+    scale: calc(var(--active, 0) + 0.5);
+    filter: blur(calc((1 - var(--active, 0)) * 1rem));
+    transition: scale calc(((1 - var(--active, 0)) + 0.2) * 1s), filter calc(((1 - var(--active, 0)) + 0.2) * 1s);
+}
+
+.things {
+    padding: 0;
+    margin: 0;
+}
+
+.digit:first-of-type {
+    padding-left: 5rem;
+}
+
+.digit:last-of-type {
+    padding-right: 5rem;
+}
+
+:root {
+    --lerp-0: 1;
+    /* === sin(90deg) */
+    --lerp-1: calc(sin(50deg));
+    --lerp-2: calc(sin(45deg));
+    --lerp-3: calc(sin(35deg));
+    --lerp-4: calc(sin(25deg));
+    --lerp-5: calc(sin(15deg));
+}
+
+.digit:is(:hover, :focus-visible) {
+    --active: var(--lerp-0);
+}
+
+.digit:is(:hover, :focus-visible)+.digit,
+.digit:has(+ .digit:is(:hover, :focus-visible)) {
+    --active: var(--lerp-1);
+}
+
+.digit:is(:hover, :focus-visible)+.digit+.digit,
+.digit:has(+ .digit + .digit:is(:hover, :focus-visible)) {
+    --active: var(--lerp-2);
+}
+
+.digit:is(:hover, :focus-visible)+.digit+.digit+.digit,
+.digit:has(+ .digit + .digit + .digit:is(:hover, :focus-visible)) {
+    --active: var(--lerp-3);
+}
+
+.digit:is(:hover, :focus-visible)+.digit+.digit+.digit+.digit,
+.digit:has(+ .digit + .digit + .digit + .digit:is(:hover, :focus-visible)) {
+    --active: var(--lerp-4);
+}
+
+.digit:is(:hover, :focus-visible)+.digit+.digit+.digit+.digit+.digit,
+.digit:has(+ .digit + .digit + .digit + .digit + .digit:is(:hover, :focus-visible)) {
+    --active: var(--lerp-5);
+}
+
+.things {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    font: bold 1.5rem sans-serif;
+    text-transform: uppercase;
+    color: grey;
+}
+
+.things li {
+    padding: 0 .5em .25em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    font-family: TBC;
+    font-size: xx-large;
+    transition: .3s;
+}
+
+.things li:hover {
+    color: #fff;
+}
+
+.things li:before {
+    content: "";
+    position: absolute;
+    inset: calc(100% - 3px) 0 0 0;
+    /* 3px = the thickness */
+    background: #ffffff;
+    /* the color */
+    scale: 0 1;
+    transition: .3s, translate 0s .3s;
+}
+
+.things:hover li:before {
+    scale: 1;
+}
+
+.things li:hover:before {
+    translate: 0;
+    transition: .3s;
+}
+
+.things:hover li:has(~ li:hover):before {
+    translate: 100% 0;
+    transition: .2s .2s, scale 0s .4s;
+}
+
+.things:hover li:hover~li:before {
+    translate: -100% 0;
+    transition: .2s .2s, scale 0s .4s;
+}
+
+.things-container {
+    color: rgb(191, 192, 192);
+    text-align: center;
+    font-size: xx-large;
+}
+
+
+main {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    margin-top: 350px;
+    gap: 450px;
+}
+
+
+/* Lazy Load Styles */
+.card-image {
+    display: block;
+    min-height: 20rem;
+    /* layout hack */
+    background: #fff center center no-repeat;
+    background-size: cover;
+    filter: blur(3px);
+    /* blur the lowres image */
+    transition: all 1s;
+}
+
+.card-image:hover {
+    filter: none;
+    /* remove the blur on hover */
+}
+
+.card-image>img {
+    display: block;
+    width: 100%;
+    opacity: 0;
+    /* visually hide the img element */
+}
+
+.card-image.is-loaded {
+    filter: none;
+    /* remove the blur on fullres image */
+    transition: filter 1s;
+}
+
+
+.card-list {
+    display: block;
+    margin: 1rem auto;
+    padding: 0;
+    font-size: 0;
+    text-align: center;
+    list-style: none;
+}
+
+.card {
+    display: inline-block;
+    width: 90%;
+    max-width: 20rem;
+    margin: 1rem;
+    font-size: 1rem;
+    text-decoration: none;
+    overflow: hidden;
+    box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, 0.5);
+    transition: transform 0.45s ease-in-out, box-shadow 0.1s;
+    position: relative;
+    /* Ensures the pseudo-element positions correctly */
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Dark overlay */
+    transition: background-color 1s ease-in-out;
+    pointer-events: none;
+    /* Ensures it doesn't interfere with mouse events */
+    z-index: 1;
+    /* Ensures it appears above the card content */
+}
+
+.card:hover {
+    transform: translateY(-0.5rem) scale(1.0125);
+    box-shadow: 0 0.5em 3rem -1rem rgba(0, 0, 0, 0.5);
+}
+
+.card:hover::before {
+    background-color: transparent;
+    /* Remove dark overlay on hover */
+}
+
+
+.card-description {
+    display: block;
+    padding: 1em 0.5em;
+    color: #515151;
+    text-decoration: none;
+}
+
+.card-description>h2 {
+    margin: 0 0 0.5em;
+}
+
+.card-description>p {
+    margin: 0;
+}
+
+.things-div {
+    width: 900px;
+    
+    height: 0;
+    opacity: 0;
+    background-color: rgba(26, 26, 26, 0.5);
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 150px;
+    overflow: hidden;
+    transition: height 0.5s ease, opacity 0.5s ease;
+}
+
+.things-container {
+    display: grid;
+    justify-items: center;
+}
+
+
+.things-div h2 {
+    font-family: TBC;
+    font-size: larger;
+    margin-top: 60px;
+}
+
+#move {
+    border: 2px solid white; /* Visible border */
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+    height: 50px; /* Size of the circle */
+    width: 50px; /* Size of the circle */
+    border-radius: 50%; /* Make it circular */
+    position: fixed; /* Fixed position */
+    pointer-events: none; /* Allows mouse events to pass through */
+    transition: left 0.1s ease, top 0.1s ease; /* Smooth transition */
+    transform: translate(-50%, -50%); /* Center the circle on the curso r */
+    z-index: 1000; /* Ensure it stays above other elements */
+}
+
+.finder{
+    display: grid;
+    justify-items: center;
+    font-family: TBC;
+}
+
+.servicefutures{
+    width: 500px;
+}
+
+.servicefutures ul{
+    gap: 20px;
+    display: grid;
+}
+
+.servicefutures ul p{
+    font-family: TBC;
+    font-size: 25px;
+}
+
+.pay{
+    padding: 10px 20px;
+    background-color: #292929;
+    color: white;
+    border-radius: 5px;
+    font-family: TBC;
+    border: 1px solid white;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    font-family: TBC;
+    width: 100vw;
+}
+
+header nav{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    
+}
+
+nav a {
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid rgb(225, 225, 225);
+    transition: all 0.2s;
+    background-color: rgb(0, 0, 0);
+}
+
+
+nav span{
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+    color: white;
+    border-radius: 10px;
+    border: 2px solid rgb(225, 225, 225);
+    background-color: rgb(0, 0, 0);
+}
+
+/* CSS for the download section */
+.download-section {
+    color: white; /* Set text color to white */
+    background-color: transparent; /* Optional: Set a dark background for contrast */
+    padding: 130px;
+    border-radius: 8px;
+    border: 2px solid rgb(222, 222, 222);
+    text-align: center;
+    gap: 40px;
+    display: grid;
+}
+
+.download-section h2 {
+    color: white; /* Ensure the heading text is also white */
+}
+
+.premium_button{
+    color: white; /* Ensure button text is white */
+    background-color: #ffc400; /* Optional: Set a button background color */
+    border: 1px solid #ffffff; /* Optional: Set button border color */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-family: TBC;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.premium_button:hover{
+    background-color: #ffffff; /* Optional: Darken the button background on hover */
+    color: black; /* Ensure text remains white on hover */
+}
+
+.standart_button{
+    color: white; /* Ensure button text is white */
+    background-color: #cf0000; /* Optional: Set a button background color */
+    border: 1px solid #ffffff; /* Optional: Set button border color */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-family: TBC;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.standart_button:hover{
+    background-color: #ffffff; /* Optional: Darken the button background on hover */
+    color: black; /* Ensure text remains white on hover */
+}
+
+.basic_button{
+    color: white; /* Ensure button text is white */
+    background-color: #333; /* Optional: Set a button background color */
+    border: 1px solid #ffffff; /* Optional: Set button border color */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-family: TBC;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.basic_button:hover{
+    background-color: #ffffff; /* Optional: Darken the button background on hover */
+    color: black; /* Ensure text remains white on hover */
+}
+
+.download-section p {
+    color: white; /* Ensure text in paragraphs is white */
+    font-family: TBC;
+    padding: 10px;
+    background-color: #292929;
+    border-radius: 10px;
+}
+
+.icon {
+    background-color: rgba(94, 0, 194, 0.487);
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    border-radius: 50%;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8000ffd4;
+    font-family: auto;
+    FONT-WEIGHT: 900;
+    font-size: xx-large;
+    bottom: 50px;
+    cursor: pointer;
+    right: 50px;
+    transition: all 1s;
+    filter: drop-shadow(2px 1px 25px);
+}
+
+.icon:hover{
+    background-color: rgb(123, 0, 255);
+
+}
+
+.icon a{
+    color: rgba(255, 255, 255, 0.631);
+    font-family: TBC;
+    margin-top: 10px;
+    transition: all 1s;
+}
+
+.icon a:HOVER{
+    color: rgb(255, 255, 255);
+
+}
+
+@media screen and (max-width: 920px) {
+    .download-section {
+        color: white;
+        background-color: transparent;
+        padding: 65px;
+        border-radius: 8px;
+        border: 2px solid rgb(222, 222, 222);
+        text-align: center;
+        gap: 40px;
+        display: grid;
+    }
+    .servicefutures {
+        width: 418px;
+    }
+    .things-div{
+        width: 612px;
+    }
+
+    #move{
+        display: none;
+    }
+    
+}
+
+@media screen and (max-width: 830px) {
+    .code{
+        font-size: 2rem;
+    }
+
+    .download-section{
+        padding: 39px;
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    .code{
+        font-size: 2rem;
+    }
+
+    .download-section {
+        padding: 16px;
+    }
+}
+
+    
+@media screen and (max-width: 666px) {
+    .download-section p {
+        color: white;
+        font-family: TBC;
+        padding: 10px;
+        background-color: #292929;
+        border-radius: 10px;
+        width: 406px;
+    }
+
+    .things {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        font: bold 1.5rem sans-serif;
+        text-transform: uppercase;
+        color: grey;
+        gap: 10px;
+    }
+
+    .things-div {
+        width: 511px;
+        margin-right: 49px;
+    }
+    .digit {
+        display: flex;
+        height: 100%;
+        padding: 5.5rem 0.5rem;
+    }
+
+}
+    
+@media screen and (max-width: 600px) {
+    .things-div {
+        width: 511px;
+        margin-right: -7px;
+    }
+}
+
+    
+@media screen and (max-width: 540px) {
+    .things-div {
+        width: 483px;
+        margin-right: 0px;
+    }
+
+}
