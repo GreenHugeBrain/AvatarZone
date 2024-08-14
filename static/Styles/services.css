@@ -1,0 +1,112 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "BPG Nino Mtavruli", sans-serif;
+    text-decoration: none;
+}
+body {
+    background: url('/static/IMG/145856081_e755a4f7-5a35-4ee2-b2fd-03bf4ccf48e0.jpg') center/cover fixed no-repeat;
+    position: relative;
+    min-height: 100vh; /* Use vh for consistent full-height display */
+    width: 100vw; /* Use vw for consistent full-width display */
+    color: white;
+    margin: 0; /* Remove default body margin */
+    display: flex;
+    flex-direction: column;
+}
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh; /* Ensure it covers the full viewport height */
+    background: rgba(53, 53, 53, 0.103); /* Dark overlay */
+    z-index: -1; /* Position it behind content */
+}
+
+/* Services Page Styles */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background: url('/IMG/layers-black-torn-paper_23-2148748898.jpg') center/cover fixed no-repeat;
+}
+.services {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+    max-width: 1000px;
+    opacity: 0; /* Initially hidden for fade-in effect */
+    animation: fadeIn 1.5s ease-out forwards; /* Apply fade-in animation */
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.service {
+    background: rgba(0, 0, 0, 0.6); /* Dark background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0; /* Initially hidden for fade-in effect */
+    animation: fadeIn 1.5s ease-out forwards; /* Apply fade-in animation */
+    animation-delay: 0.5s; /* Delay for staggered effect */
+}
+.service:nth-child(1) {
+    animation-delay: 0.5s; /* Stagger animation for each service */
+}
+.service:nth-child(2) {
+    animation-delay: 1s; /* Stagger animation for each service */
+}
+.service:nth-child(3) {
+    animation-delay: 1.5s; /* Stagger animation for each service */
+}
+.service:hover {
+    transform: scale(1.05); /* Slightly zoom in on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7); /* Stronger shadow on hover */
+}
+.service-h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background for better readability */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.service-basic {
+    color: #ffcc00; /* Basic plan color */
+}
+.service-standart {
+    color: #00ccff; /* Standart plan color */
+}
+.service-premium {
+    color: #ff6600; /* Premium plan color */
+}
+.service button {
+    background-color: #ffffff;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 10px;
+}
+.service button:hover {
+    background-color: #333;
+    color: #ffffff;
+}

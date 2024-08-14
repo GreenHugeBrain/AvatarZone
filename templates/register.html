@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ka">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>რეგისტრაცია</title>
+    <link rel="icon" href="/static/IMG/download-_1_(1).png">
+    <link rel="stylesheet" href="/static/Styles/register.css"> <!-- Link to the shared CSS file -->
+</head>
+
+<body>
+    <header>
+        <nav>
+            <!-- Navigation menu (same as other pages) -->
+            <div class="burger-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul>
+                <li><a href="/">მთავარი</a></li>
+                <li><a href="/about_project">პროექტის შესახებ</a></li>
+                <li><a href="/services">სერვისები</a></li>
+                <li><a href="/login">შესვლა</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="registration-form">
+            <h1>რეგისტრაცია</h1>
+            <form id="registrationForm" method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <!-- Include CSRF token -->
+
+                <label for="username">მომხმარებლის სახელი:</label>
+                {{ form.username(class="form-control", id="username") }}
+
+                <label for="email">ელ. ფოსტა:</label>
+                {{ form.email(class="form-control", id="email") }}
+
+                <label for="password">პაროლი:</label>
+                {{ form.password(class="form-control", id="password") }}
+
+                <label for="groupID">ვადა:</label>
+                {{ form.groupID(class="form-control", id="groupID") }}
+
+                <button type="submit" id="submit">{{ form.submit.label.text }}</button>
+            </form>
+        </div>
+    </main>
+
+    <script src="/ui/JS/sendData.js"></script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navUl = document.querySelector('nav ul');
+            const navContainerMobile = document.querySelector('.nav-container-mobile');
+
+
+            burgerMenu.addEventListener('click', function (e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+
+
+
+            document.addEventListener('click', function (e) {
+                if (navUl.classList.contains('show') && !navUl.contains(e.target)) {
+                    toggleMenu();
+                }
+            });
+
+            function toggleMenu() {
+                navUl.classList.toggle('show');
+                burgerMenu.classList.toggle('active');
+                navContainerMobile.classList.toggle('blurred');
+            }
+        });
+    </script>
+   
+</body>
+
+</html>

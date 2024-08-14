@@ -1,0 +1,650 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "BPG Nino Mtavruli", sans-serif;
+    text-decoration: none;
+}
+
+body {
+    background: url('/static/IMG/145856081_e755a4f7-5a35-4ee2-b2fd-03bf4ccf48e0.jpg') center/cover fixed no-repeat;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100vw;
+    color: white;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(53, 53, 53, 0.5);
+    z-index: -1;
+}
+
+body footer {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: #0000006b;
+    width: 100%;
+    height: 80px;
+    font-size: 20px;
+    display: none;
+
+}
+
+/* Header Navigation */
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    height: 100px;
+    text-align: right;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+    z-index: 10000;
+    animation: fadeInUp 1s ease-out;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.4s ease, background-color 0.4s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.4s ease;
+    z-index: -1;
+}
+
+nav ul li a:hover::before,
+nav ul li a:focus::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+    background-color: rgb(99, 99, 99);
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    color: rgb(131, 130, 131);
+    color: wheat;
+    transform: translateY(-5px) scale(1.05);
+    border-radius: 10px;
+}
+
+nav ul li a:hover::after,
+nav ul li a:focus::after {
+    transform: scaleX(1);
+    transform-origin: bottom right;
+    background-color: rgba(112, 112, 112, 0.481);
+}
+
+nav ul li a:hover {
+    box-shadow: 0 0 15px rgba(102, 100, 102, 0.7);
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.registration-form {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.registration-form h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.registration-form label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.registration-form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.registration-form button {
+    width: 100%;
+    background-color: #ffffff;
+    color: #333;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.registration-form button:hover {
+    background-color: #333;
+    color: #ffffff;
+}
+
+
+
+.login-form h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-form label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.login-form button {
+    width: 100%;
+    background-color: #ffffff;
+    color: #333;
+    border: none;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.login-form button:hover {
+    background-color: #333;
+    color: #ffffff;
+}
+
+
+.login-form {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+#groupID {
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+
+
+/* ბურგერ მენიუს ანიმაცია */
+.burger-menu.active .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger-menu.active .line2 {
+    opacity: 0;
+}
+
+.burger-menu.active .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+
+
+
+
+
+.nav {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+}
+
+.burger-menu {
+    display: none;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+.burger-menu div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+.icon {
+    width: 60px;
+    height: auto;
+}
+
+@media screen and (max-width: 768px) and (max-width: 1023px) {
+    .nav {
+        display: none;
+        margin-top: 50px;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: #020202b0;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        padding-bottom: 100%;
+        margin-top: 20px;
+
+    }
+
+
+
+
+    nav ul li a::before,
+    nav ul li a::after,
+    nav ul li a,
+    .avatarfinder img,
+    header nav img,
+    .avatarfinder h1,
+    .avatarfinder img,
+    body::before,
+    .tooltip-container {
+        transition: none;
+        animation: none;
+    }
+
+    nav ul li a:hover::before,
+    nav ul li a:focus::before,
+    nav ul li a:hover::after,
+    nav ul li a:focus::after,
+    nav ul li a:hover,
+    nav ul li a:focus,
+    .avatarfinder img:hover {
+        transform: none;
+        background-color: transparent;
+        color: white;
+        /* or whatever your default color is */
+        box-shadow: none;
+    }
+
+
+    .tooltip-text,
+    .tooltip-text-1,
+    .tooltip-text-2,
+    .tooltip-text-3 {
+        visibility: hidden;
+        opacity: 0;
+        display: none;
+
+    }
+
+
+
+
+
+
+
+
+
+    body footer {
+        display: flex;
+    }
+
+    .nav {
+        display: flex;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.8);
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        padding-bottom: 100%;
+
+    }
+
+    nav ul.show {
+        display: flex;
+        overflow-y: hidden;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    body footer {
+        display: flex;
+    }
+
+
+}
+
+@media screen and (max-width: 425px) {
+    .icon {
+        width: 50px;
+        /* ზომის შემცირება Mobile L-ისთვის */
+    }
+
+
+    nav ul li a::before,
+    nav ul li a::after,
+    nav ul li a,
+    .avatarfinder img,
+    header nav img,
+    .avatarfinder h1,
+    .avatarfinder img,
+    body::before,
+    .tooltip-container {
+        transition: none;
+        animation: none;
+    }
+
+    nav ul li a:hover::before,
+    nav ul li a:focus::before,
+    nav ul li a:hover::after,
+    nav ul li a:focus::after,
+    nav ul li a:hover,
+    nav ul li a:focus,
+    .avatarfinder img:hover {
+        transform: none;
+        background-color: transparent;
+        color: white;
+        /* or whatever your default color is */
+        box-shadow: none;
+    }
+
+
+    .tooltip-text,
+    .tooltip-text-1,
+    .tooltip-text-2,
+    .tooltip-text-3 {
+        visibility: hidden;
+        opacity: 0;
+        display: none;
+
+    }
+
+
+    .avatarfinder h1 {
+        font-size: 1.2rem;
+        /* Adjust font size for small screens */
+    }
+
+
+
+    body footer {
+        display: flex;
+        font-size: 12px;
+    }
+
+
+
+
+
+
+    .nav {
+        padding: 10px;
+    }
+
+    .burger-menu {
+        margin-left: auto;
+        /* ბურგერ მენიუს გადაწევა მარჯვენა მხარეს */
+    }
+
+
+}
+
+@media screen and (max-width: 375px) {
+    .icon {
+        width: 45px;
+    }
+
+    body footer {
+        display: flex;
+    }
+
+
+    nav ul li a::before,
+    nav ul li a::after,
+    nav ul li a,
+    .avatarfinder img,
+    header nav img,
+    .avatarfinder h1,
+    .avatarfinder img,
+    body::before,
+    .tooltip-container {
+        transition: none;
+        animation: none;
+    }
+
+    nav ul li a:hover::before,
+    nav ul li a:focus::before,
+    nav ul li a:hover::after,
+    nav ul li a:focus::after,
+    nav ul li a:hover,
+    nav ul li a:focus,
+    .avatarfinder img:hover {
+        transform: none;
+        background-color: transparent;
+        color: white;
+       
+        box-shadow: none;
+    }
+
+
+    .tooltip-text,
+    .tooltip-text-1,
+    .tooltip-text-2,
+    .tooltip-text-3 {
+        visibility: hidden;
+        opacity: 0;
+        display: none;
+
+    }
+
+
+    .avatarfinder h1 {
+        font-size: 1.2rem;
+    
+    }
+
+
+
+}
+
+@media screen and (max-width: 320px) {
+    .icon {
+        width: 40px;
+    }
+
+    body footer {
+        display: flex;
+
+    }
+
+
+
+   
+    nav ul li a::before,
+    nav ul li a::after,
+    nav ul li a,
+    .avatarfinder img,
+    header nav img,
+    .avatarfinder h1,
+    .avatarfinder img,
+    body::before,
+    .tooltip-container {
+        transition: none;
+        animation: none;
+    }
+
+    nav ul li a:hover::before,
+    nav ul li a:focus::before,
+    nav ul li a:hover::after,
+    nav ul li a:focus::after,
+    nav ul li a:hover,
+    nav ul li a:focus,
+    .avatarfinder img:hover {
+        transform: none;
+        background-color: transparent;
+        color: white;
+       
+        box-shadow: none;
+    }
+
+
+    .tooltip-text,
+    .tooltip-text-1,
+    .tooltip-text-2,
+    .tooltip-text-3 {
+        visibility: hidden;
+        opacity: 0;
+        display: none;
+
+    }
+
+
+    .avatarfinder h1 {
+        font-size: 1.2rem;
+    
+    }
+
+
+
+    .nav {
+        padding: 8px;
+    }
+}
+
+/* ბურგერ მენიუს ანიმაცია */
+.burger-menu.active .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger-menu.active .line2 {
+    opacity: 0;
+}
+
+.burger-menu.active .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}

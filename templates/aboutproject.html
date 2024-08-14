@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>პროექტის შესახებ</title>
+    <link rel="stylesheet" href="/static/Styles/aboutproject.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="burger-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul>
+                <li><a href="/">მთავარი</a></li>
+                <li><a href="/about_project">პროექტის შესახებ</a></li>
+                <li><a href="/services">სერვისები</a></li>
+                <li><a href="/login">შესვლა</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content">
+        <div class="avatarfinder">
+            <h1>პროექტის შესახებ</h1>
+            <p>
+                AvatarZone არის SteamAvatarFinder-ზე დაფუძვნებული პროექტი
+                ჩვენი აპლიკაციის ვალდებულებაა DataBase-ზე არსებული ინფორმაცია/listing აპლიკაციაში განალაგოს და გაამარტივოს 
+                სკინების ტრეიდინგი.
+                ჩვენს აპლიკაციაში მოცემული ფუნქციონალები ამარტივებს item-ების ფილტრაციას და ცდილობს წინა პლანზე წამოწიოს იმ კრიტერიუმების შესაფერისი item რაც თქვენი სურვილისამებრ მიუთითეთ
+            </p>
+            <img src="/static/IMG/5.png" alt="Logo"> <!-- Replace with your logo path -->
+        </div>
+    </div>
+    
+    <script src="script.js"></script> <!-- Link to your JavaScript file -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navUl = document.querySelector('nav ul');
+            const navContainerMobile = document.querySelector('.nav-container-mobile');
+            const logo = document.querySelector('.logo');
+
+            burgerMenu.addEventListener('click', function (e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+
+            logo.addEventListener('click', function (e) {
+                if (logo.classList.contains('blurred') && !logo.contains(e.target)) {
+                    toggleMenu();
+                }
+            })
+
+            document.addEventListener('click', function (e) {
+                if (navUl.classList.contains('show') && !navUl.contains(e.target)) {
+                    toggleMenu();
+                }
+            });
+
+            function toggleMenu() {
+                navUl.classList.toggle('show');
+                burgerMenu.classList.toggle('active');
+                logo.classList.toggle('blurred');
+            }
+        });
+    </script>
+</body>
+</html>

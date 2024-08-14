@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>სერვისები</title>
+    <link rel="icon" href="/static/IMG/download-_1_(1).png">
+
+    <link rel="stylesheet" href="/static/Styles/services.css"> <!-- Update with your actual path -->
+</head>
+<body>
+    <main>
+        <div class="services">
+            <form class="service" action="{{ url_for('basic') }}" method="POST">
+                <h2 class="service-h2">AvatarZone:<span class="service-basic">Basic</span></h2>
+                <p>5 დღით: 16.99₾<br>
+                    მინუსები: 3 საათი ჰოლდი</p>
+                <button type="submit">Buy Basic</button>
+                {% if current_user.basicbuyer == True %}
+                <button type="submit">Download</button>
+                {% endif %}
+            </form>
+            <form class="service" action="{{ url_for('standart') }}" method="POST">
+                <h2 class="service-h2">AvatarZone:<span class="service-standart">Standart</span></h2>
+                <p>AvatarFinder - 2 კვირით: 45.99₾<br>
+                    მინუსები: 8 საათი ჰოლდი<br>
+                    ბენეფიტები: მეტი რექუესტი</p>
+                <button type="submit">Buy Standart</button>
+                {% if current_user.standartbuyer == True %}
+                <button type="submit">Download</button>
+                {% endif %}
+            </form> 
+            <form class="service" action="{{ url_for('premium') }}" method="POST">
+                <h2 class="service-h2">AvatarZone:<span class="service-premium">Premium</span></h2>
+                <p>AvatarFinder - 1 თვით: 399.99₾<br>
+                    ბენეფიტები: მეტი რექუესტი, სრული პროდუქტი</p>
+                <button type="submit">Buy Premium</button>
+                {% if current_user.premiumbuyer == True %}
+                <button type="submit">Download</button>
+                {% endif %}
+            </form>
+        </div>  
+    </main>
+</body>
+</html>

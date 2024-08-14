@@ -4,45 +4,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/Styles/pay.css">
-    <link rel="icon" href="/static/download-_1_1.jpg" type="icon">
-
-    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
-    <title>Avatar Zone</title>
+    <title>ავტორიზაცია</title>
+    <link rel="icon" href="/static/IMG/download-_1_(1).png">
+    <link rel="stylesheet" href="/static/Styles/register.css">
 </head>
 
 <body>
-    <div class="icon"><a href="https://discord.gg/Zpfg2Cy7" target="_blank">დ</a></div>
+    <header>
+        <nav>
+            <!-- Navigation menu (same as other pages) -->
+            <div class="burger-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>awd
+            <ul>
+                <li><a href="/">მთავარი</a></li>
+                <li><a href="/about_project">პროექტის შესახებ</a></li>
+                <li><a href="/services">სერვისები</a></li>
+                <li><a href="/register">რეგისტრაცია</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
-        <form class="login-form" action="/login" method="post" enctype="multipart/form-data">
-            {{ form.hidden_tag() }}  <!-- This will add a hidden CSRF token field -->
+        <div class="login-form">
+            <h1>Login</h1>
+            <form id="loginForm" method="POST">
+                {{ form.hidden_tag() }}
+                <!-- Include CSRF token -->
 
-            <div class="form-group">
-                {{ form.username.label }}<br>
-                {{ form.username(class="form-control") }}
-            </div>
-            <div class="form-group">
-                {{ form.password.label }}<br>
-                {{ form.password(class="form-control") }}
-            </div>
-            <div class="form-group">
-                {{ form.submit(class="btn btn-primary") }}
-            </div>
+                <label for="username">სახელი:</label>
+                {{ form.username(class="form-control", id="username") }}
 
-            {% if LoginSuccess %}
-            <p>თქვენ წარმატებით გაიარეთ ავტორიზაცია</p>  <!-- Message in Georgian -->
-            {% endif %}
-        </form>
+                <label for="password">პაროლი:</label>
+                {{ form.password(class="form-control", id="password") }}
 
+                <button type="submit" id="submit">{{ form.submit.label.text }}</button>
+                <p id="error-message" style="color: red;"></p>
+            </form>
+        </div>
     </main>
-    
 
-    <div id="move"></div>
+    <script src="/ui/JS/login.js"></script>
 
-    <script src="/static/js/smooth-scroll.js"></script>
-    <script src="/static/js/main.js"></script>
-    <script src="/static/js/mouseMove.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const burgerMenu = document.querySelector('.burger-menu');
+            const navUl = document.querySelector('nav ul');
+            const navContainerMobile = document.querySelector('.nav-container-mobile');
+
+
+            burgerMenu.addEventListener('click', function (e) {
+                e.stopPropagation();
+                toggleMenu();
+            });
+
+
+
+            document.addEventListener('click', function (e) {
+                if (navUl.classList.contains('show') && !navUl.contains(e.target)) {
+                    toggleMenu();
+                }
+            });
+
+            function toggleMenu() {
+                navUl.classList.toggle('show');
+                burgerMenu.classList.toggle('active');
+                navContainerMobile.classList.toggle('blurred');
+            }
+        });
+    </script>
 </body>
 
 </html>

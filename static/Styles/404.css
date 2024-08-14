@@ -11,20 +11,33 @@ body {
 	justify-content: center; 
 	align-items: center; 
 	height: 100vh; 
+	background-image: url(/AvatarZone/static/IMG/145856081_e755a4f7-5a35-4ee2-b2fd-03bf4ccf48e0.jpg)  ;
 } 
 
 .error-container { 
 	text-align: center; 
-	background-color: #fff; 
+	background-color: #822424a1; 
 	padding: 20px; 
 	border-radius: 5px; 
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+	padding: 100px;
 } 
 
-h1 { 
+h1,
+h2{ 
 	font-size: 5rem; 
-	color: #ff5733; 
+	color: coral;
+	font-family: "BPG Nino Mtavruli", sans-serif; 
 } 
+
+div p{
+	
+		font-size: 2rem; 
+		color: coral; 
+		font-family: "BPG Nino Mtavruli", sans-serif;
+	
+	
+}
 
 p { 
 	font-size: 1.5rem; 
