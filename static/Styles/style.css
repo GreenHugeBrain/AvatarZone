@@ -21,7 +21,7 @@ body footer {
 }
 
 body {
-    background: url('/static/IMG/145856081_e755a4f7-5a35-4ee2-b2fd-03bf4ccf48e0.jpg') center/cover fixed no-repeat;
+    background: url('./static/IMG/145856081_e755a4f7-5a35-4ee2-b2fd-03bf4ccf48e0.jpg') center/cover fixed no-repeat;
     position: relative;
     min-height: 100vh;
     width: 100vw;
